@@ -1,0 +1,25 @@
+
+function checkAnswer(){
+ const value=document.getElementById("answer").value;
+ if(value==="") return;
+
+ if(Number(value)===questions[current].a){
+   score++;
+   document.getElementById("score").textContent=score;
+   document.getElementById("feedback").textContent="✅ Correct! Next problem unlocked!";
+   current++;
+   document.getElementById("answer").value="";
+   setTimeout(()=>{
+     document.getElementById("feedback").textContent="";
+     showQuestion();
+   },700);
+ }else{
+   document.getElementById("feedback").textContent="❌ Try again!";
+ }
+}if(current>=questions.length){
+ document.getElementById("question").textContent="🏆 ALL QUESTIONS COMPLETE!";
+ document.getElementById("answer").classList.add("hidden");
+ document.querySelector("#mathPage button").classList.add("hidden");
+ document.getElementById("progress").textContent="10 of 10 completed!";
+ return;
+}
